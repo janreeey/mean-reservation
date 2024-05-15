@@ -1,0 +1,88 @@
+<div class="bg-white p-4 w-full">
+  <div *ngIf="editResId">
+    <h2 class="text-xl mb-4">Edit Reservation</h2>
+  </div>
+  <div *ngIf="!editResId">
+    <h2 class="text-xl mb-4">Add Reservation</h2>
+  </div>
+
+  <form [formGroup]="userForm">
+    <div class="mb-4">
+      <label for="fullname" class="block text-gray-700">Fullname:</label>
+      <input
+        type="text"
+        id="fullname"
+        name="fullname"
+        class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+        formControlName="fullname"
+      />
+    </div>
+    <div class="mb-4">
+      <label for="email" class="block text-gray-700">Email:</label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+        formControlName="email"
+      />
+    </div>
+    <div class="mb-4">
+      <label for="address" class="block text-gray-700">Address:</label>
+      <input
+        type="text"
+        id="address"
+        name="address"
+        class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+        formControlName="address"
+      />
+    </div>
+    <div class="mb-4">
+      <div *ngIf="editResId">
+        <label for="date" class="block text-gray-700">Date:</label>
+        <input
+          type="text"
+          id="date"
+          name="date"
+          class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          formControlName="date"
+        />
+      </div>
+      <div *ngIf="!editResId">
+        <label for="date" class="block text-gray-700">Date:</label>
+        <input
+          type="date"
+          id="date"
+          name="date"
+          class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          formControlName="date"
+        />
+      </div>
+    </div>
+    <div class="mt-4 flex gap-2 justify-end">
+      <button
+        class="border font-medium h-[40px] w-[150px] rounded"
+        routerLink=""
+      >
+        Back
+      </button>
+      <div *ngIf="editResId">
+        <button
+          class="bg-[#e9cd2d] text-white font-medium h-[40px] w-[150px] rounded"
+          (click)="updateReservation()"
+        >
+          Update
+        </button>
+      </div>
+      <div *ngIf="!editResId">
+        <button
+          type="submit"
+          class="bg-[#2D69E9] text-white font-medium h-[40px] w-[150px] rounded"
+          (click)="createReservation()"
+        >
+          Create
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
